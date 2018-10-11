@@ -1,0 +1,57 @@
+!! ------------------------------------------------------------------------------
+!! ROFI Color theme
+!! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.font: Dejavu Sans Mono 10
+rofi.seperator-style: solid
+
+! ------------------------------------------------------------------------------
+! URXVT
+! ------------------------------------------------------------------------------
+
+URxvt*termName: xterm-256color
+
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+! Font config
+URxvt*font: xft:Dejavu Sans Mono:regular:size=8
+Urxvt.letterSpace : 0
+
+URxvt.scrollBar: false
+URxvt.cursorBlink: true
+
+URxvt.perl-ext: default,matcher,selection-to-clipboard,confirm-paste
+
+! Open urls in browser with Control-Click
+URxvt.url-launcher: /usr/bin/firefox
+urxvt.matcher.button: C1
+
+URxvt.saveLines: 10000
+
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+! Change font size on Control-Plus/Minus
+URxvt.keysym.Control-0x2b: perl:font-size:increase
+URxvt.keysym.Control-0x2d: perl:font-size:decrease
+
+! Padding
+URxvt.internalBorder:  15
+
+! Default to light theme
+#include ".Xdefaults.light"
