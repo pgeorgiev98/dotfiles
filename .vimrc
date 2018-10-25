@@ -127,8 +127,10 @@ endfunc
 function! ToggleBackground()
 	if (&background == 'light')
 		set background=dark
+		highlight Normal ctermbg=black
 	else
 		set background=light
+		highlight Normal ctermbg=white
 	endif
 endfunc
 
