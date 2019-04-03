@@ -1,11 +1,3 @@
-# Path
-typeset -U path
-path=(~/bin ~/.local/bin /usr/local/bin /usr/local/sbin /opt/bin $path[@] /bin /sbin /usr/bin /usr/sbin)
-
-# Variables
-export VISUAL=vim
-export WINEPREFIX=/tmp/wine
-
 # Completion
 autoload -Uz compinit
 compinit
@@ -46,13 +38,7 @@ bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 bindkey '^k' up-line-or-beginning-search
 bindkey '^j' down-line-or-beginning-search
-bindkey '^h' backward-char
-bindkey '^l' forward-char
 
-bindkey '\033[1;5D' backward-word                       # [Ctrl+Left]  - backward word
-bindkey '\033[1;5C' forward-word                        # [Ctrl+Right] - forward word
-bindkey '\033[1~' beginning-of-line                     # [Home] - beginning of line
-bindkey '\033[4~' end-of-line                           # [End]  - end-of-line
 bindkey '^?' backward-delete-char                       # [Backspace] - delete backward
 bindkey "${terminfo[kdch1]}" delete-char                # [Delete] - delete forward
 
@@ -69,10 +55,10 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 
-alias c=' clear'
+alias c=' tput reset'
 alias e=' exit'
 alias s='sudo'
-alias mk="make -j$(grep processor /proc/cpuinfo | wc -l)"
+alias mk="make -j$(nproc)"
 
 alias reboot='systemctl reboot'
 alias poweroff='systemctl poweroff'
@@ -84,7 +70,6 @@ alias svim='sudo vim'
 alias svi='sudo vim'
 alias edit='vim'
 alias sudoedit='sudo vim'
-alias top='htop'
 alias cd..='cd ..'
 
 alias wget='wget -c'
@@ -93,12 +78,9 @@ alias gdb='gdb -q'
 alias ffprobe='ffprobe -hide_banner'
 alias ffmpeg='ffmpeg -hide_banner'
 
-alias tr=' tput reset'
 alias toclip='xclip -selection clipboard'
 alias path='echo -e ${PATH//:/\\n}'
 alias vsp='socat -d -d pty,raw,echo=0 pty,raw,echo=0'
-
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Some '.' magic
 function rationalise-dot() {
@@ -146,5 +128,3 @@ function get_rprompt {
 
 PROMPT='%(!.%B%F{red}.%B%n@)%m%f %b%1~ $(git_prompt)%_%#%f '
 RPROMPT='$(get_rprompt)'
-
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
