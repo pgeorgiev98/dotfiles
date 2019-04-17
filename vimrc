@@ -48,6 +48,9 @@ nmap <F2> i#include <stdio.h><CR>#include <stdlib.h><CR><CR>int main()<CR>{<CR>r
 " Basic C++ program
 nmap <F3> i#include <iostream><CR>using namespace std;<CR><CR>int main()<CR>{<CR>return 0;<CR>}<Esc>
 
+" Automatically put a shebang on new .sh files
+autocmd BufNewFile *.sh :0put='#!/bin/bash'
+
 
 
 " Completion
@@ -133,4 +136,3 @@ function! ToggleBackground()
 		highlight Normal ctermbg=white
 	endif
 endfunc
-
