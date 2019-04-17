@@ -5,33 +5,29 @@ if [ -e ${LOCKFILE} ] && kill -0 `cat ${LOCKFILE}`; then exit; fi
 trap "rm -f ${LOCKFILE}; exit" INT TERM EXIT
 echo $$ > ${LOCKFILE}
 
+function message() {
+	dunstify -t 10000 2690 -u critical "$1"
+}
+
 while true; do
 	sleep 10
 
-	DISCHARGING=$(upower -i `upower -e | grep BAT` |\
-		grep state | grep discharging)
-
-	if [ ! -n "$DISCHARGING" ]; then
+	if ! upower -i `upower -e | grep BAT` |\
+		grep 'state.*discharging' &> /dev/null; then
 		continue
 	fi
 
 	VALUE=$(upower -i `upower -e | grep BAT` |\
 		grep percentage | grep -o "[0-9]*")
 
-	function msg() {
-		notify-send "$1" -i "$2" -t 1000
-	}
-
 	if [ "$VALUE" -le 7 ]; then
 		TEXT="Battery level critical! Hibernating in 5 seconds!"
-		msg "$TEXT" 'notification-battery-empty'
+		message "$TEXT"
 		sleep 5
-		systemctl hibernate
+		~/.config/i3/scripts/hibernate.sh
 	elif [ "$VALUE" -le 15 ]; then
 		TEXT="Battery level low!"
-		msg "$TEXT" 'notification-battery-low'
+		message "$TEXT"
 	fi
 
 done
-
-rm -f ${LOCKFILE}
