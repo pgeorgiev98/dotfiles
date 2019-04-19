@@ -82,6 +82,9 @@ alias toclip='xclip -selection clipboard'
 alias path='echo -e ${PATH//:/\\n}'
 alias vsp='socat -d -d pty,raw,echo=0 pty,raw,echo=0'
 
+# A simple way to repeat a single command
+function loop() { while true; do $@; done }
+
 # Some '.' magic
 function rationalise-dot() {
 	local MATCH
