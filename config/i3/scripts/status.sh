@@ -170,12 +170,27 @@ function wifi {
 
 	no_sep="\"separator\":false,\"separator_block_width\":${ICON_SPACING}"
 
+	tx_color=''
+	rx_color=''
+
+	if [ $dtx -gt $((1*1024*1024)) ]; then
+		tx_color=",\"color\":\"$COLOR_RED\""
+	elif [ $dtx -gt $((128*1024)) ]; then
+		tx_color=",\"color\":\"$COLOR_YELLOW\""
+	fi
+
+	if [ $drx -gt $((1*1024*1024)) ]; then
+		rx_color=",\"color\":\"$COLOR_RED\""
+	elif [ $drx -gt $((128*1024)) ]; then
+		rx_color=",\"color\":\"$COLOR_YELLOW\""
+	fi
+
 	echo "{\"name\":\"wifi_name\",\"full_text\":\" $SSID\",$no_sep},"
 	echo "{\"name\":\"wifi_ip\",\"full_text\":\"$IP\",$no_sep},"
-	echo "{\"name\":\"wifi_down_icon\",\"full_text\":\"\",$no_sep},"
-	echo "{\"name\":\"wifi_down_text\",\"full_text\":\"$(pretty_size $drx)\",\"min_width\":\"999.9 M\",\"align\":\"right\",$no_sep},"
-	echo "{\"name\":\"wifi_up_icon\",\"full_text\":\"\",$no_sep},"
-	echo "{\"name\":\"wifi_up_text\",\"full_text\":\"$(pretty_size $dtx)\",\"min_width\":\"999.9 M\",\"align\":\"right\"}"
+	echo "{\"name\":\"wifi_down_icon\",\"full_text\":\"\",$no_sep$rx_color},"
+	echo "{\"name\":\"wifi_down_text\",\"full_text\":\"$(pretty_size $drx)\",\"min_width\":\"999.9 M\",\"align\":\"right\",$no_sep$rx_color},"
+	echo "{\"name\":\"wifi_up_icon\",\"full_text\":\"\",$no_sep$tx_color},"
+	echo "{\"name\":\"wifi_up_text\",\"full_text\":\"$(pretty_size $dtx)\",\"min_width\":\"999.9 M\",\"align\":\"right\"$tx_color}"
 }
 
 function ram {
