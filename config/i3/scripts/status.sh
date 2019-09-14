@@ -6,6 +6,13 @@ SLEEPPID=''
 
 trap 'if [ ! -z $SLEEPPID ]; then kill -SIGINT $SLEEPPID; fi' SIGUSR1
 
+CPU_STATS_OLD_FILE=$(mktemp)
+CPU_STATS_NEW_FILE=$(mktemp)
+STATUS_WIFI_FILE=$(mktemp)
+WIFI_STATS_FILE=$(mktemp)
+
+trap "rm -f $CPU_STATS_OLD_FILE $CPU_STATS_NEW_FILE $STATUS_WIFI_FILE $WIFI_STATS_FILE" INT TERM EXIT
+
 function date_time {
 	echo "{\"name\":\"date\",\"full_text\":\" $(date +%Y-%m-%d)\"},"
 	echo "{\"name\":\"time\",\"full_text\":\" $(date +%H:%M:%S)\"}"
@@ -78,13 +85,12 @@ function volume {
 
 function cpu {
 	cpu_usage=[]
-	touch /tmp/.cpu_stats_old
-	grep '^cpu[0-9]' /proc/stat > /tmp/.cpu_stats_new
+	grep '^cpu[0-9]' /proc/stat > $CPU_STATS_NEW_FILE
 	i=0
-	lines_count=`wc -l /tmp/.cpu_stats_new | awk '{print $1}'`
+	lines_count=`wc -l $CPU_STATS_NEW_FILE | awk '{print $1}'`
 	for i in `seq 0 $((lines_count-1))`; do 
-		read -r -a stats <<< `head -n $((i+1)) /tmp/.cpu_stats_new | tail -n 1`
-		read -r -a old_stats <<< `head -n $((i+1)) /tmp/.cpu_stats_old | tail -n 1`
+		read -r -a stats <<< `head -n $((i+1)) $CPU_STATS_NEW_FILE | tail -n 1`
+		read -r -a old_stats <<< `head -n $((i+1)) $CPU_STATS_OLD_FILE | tail -n 1`
 		s=(${stats[@]})
 		for j in `seq 1 8`; do s[j]=$((s[j]-old_stats[j])); done
 		total=$((s[1]+s[2]+s[3]+s[4]+s[5]+s[6]+s[7]+s[8]))
@@ -92,7 +98,7 @@ function cpu {
 
 		cpu_usage[i]=$(( 100 - (100*idle) / total ))
 	done
-	mv /tmp/.cpu_stats_new /tmp/.cpu_stats_old &> /dev/null
+	mv $CPU_STATS_NEW_FILE $CPU_STATS_OLD_FILE &> /dev/null
 
 	usage_text='['
 	for i in ${cpu_usage[@]}; do
@@ -158,19 +164,16 @@ function wifi {
 		exit 0
 	fi
 
-	TMPFILE=/tmp/.status.wifi
-	iwconfig $IFACE > $TMPFILE
-	SSID=`grep -o 'ESSID:".*"' $TMPFILE`
+	iwconfig $IFACE > $STATUS_WIFI_FILE
+	SSID=`grep -o 'ESSID:".*"' $STATUS_WIFI_FILE`
 	SSID="${SSID:7:-1}"
 	IP=`ip addr show dev wlo1 | grep -o 'inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*'`
 	IP=${IP:5}
-	rm -f $TMPFILE
 
-	touch /tmp/.wifi_stats
 	rx="$(cat /sys/class/net/wlo1/statistics/rx_bytes)"
 	tx="$(cat /sys/class/net/wlo1/statistics/tx_bytes)"
-	read old_rx old_tx < /tmp/.wifi_stats
-	echo "$rx $tx" > /tmp/.wifi_stats
+	read old_rx old_tx < $WIFI_STATS_FILE
+	echo "$rx $tx" > $WIFI_STATS_FILE
 	drx=$((rx-old_rx))
 	dtx=$((tx-old_tx))
 
