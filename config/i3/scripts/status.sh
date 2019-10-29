@@ -13,6 +13,19 @@ WIFI_STATS_FILE=$(mktemp)
 
 trap "rm -f $CPU_STATS_OLD_FILE $CPU_STATS_NEW_FILE $STATUS_WIFI_FILE $WIFI_STATS_FILE" INT TERM EXIT
 
+function get_cpu_temperature_file {
+	for i in /sys/class/hwmon/hwmon*/temp*_label; do
+		if grep package $i -i &> /dev/null; then
+			f=$(sed 's/label$/input/' <<< $i)
+			if [ -r $f ]; then
+				echo $f
+				return
+			fi
+		fi
+	done
+}
+cpu_temperature_file=$(get_cpu_temperature_file)
+
 function date_time {
 	echo "{\"name\":\"date\",\"full_text\":\" $(date +%Y-%m-%d)\"},"
 	echo "{\"name\":\"time\",\"full_text\":\" $(date +%H:%M:%S)\"}"
@@ -125,17 +138,26 @@ function cpu {
 	usage_text="$usage_text ]"
 
 	temp_color=''
-	temp="$(cat /sys/class/hwmon/hwmon1/temp1_input)"
-	temp=$((temp/1000))
+	temp=
+	if [ -n "$cpu_temperature_file" ]; then
+		temp=$(cat $cpu_temperature_file)
+	fi
 
-	if [ "$temp" -ge 80 ]; then
+	if [ -z "$temp" ]; then
+		temp='N/A'
 		temp_color=",\"color\":\"$COLOR_RED\""
-	elif [ "$temp" -ge 65 ]; then
-		temp_color=",\"color\":\"$COLOR_YELLOW\""
+	else
+		temp="$((temp/1000)) °C"
+
+		if [ "$temp" -ge 80 ]; then
+			temp_color=",\"color\":\"$COLOR_RED\""
+		elif [ "$temp" -ge 65 ]; then
+			temp_color=",\"color\":\"$COLOR_YELLOW\""
+		fi
 	fi
 
 	echo "{\"name\":\"cpu_temp_icon\",\"full_text\":\"\",\"separator\":false,\"separator_block_width\":${ICON_SPACING}${temp_color}},"
-	echo "{\"name\":\"cpu_temp_text\",\"full_text\":\"$temp °C\",\"min_width\":\"100 °C\",\"align\":\"right\"${temp_color}},"
+	echo "{\"name\":\"cpu_temp_text\",\"full_text\":\"$temp\",\"min_width\":\"100 °C\",\"align\":\"right\"${temp_color}},"
 
 	echo "{\"name\":\"cpu_usage_text\",\"full_text\":\"$usage_text\"}"
 }
