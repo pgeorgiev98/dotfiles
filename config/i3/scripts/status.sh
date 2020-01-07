@@ -156,8 +156,26 @@ function cpu {
 		fi
 	fi
 
+	maxfreq=0
+	for i in /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq; do
+		f=`cat $i`
+		if [ $f -gt $maxfreq ]; then
+			maxfreq=$f
+		fi
+	done
+	freq_color=''
+	if [ $maxfreq -gt 2900000 ]; then
+		freq_color=",\"color\":\"$COLOR_RED\""
+	elif [ $maxfreq -gt 1400000 ]; then
+		freq_color=",\"color\":\"$COLOR_YELLOW\""
+	fi
+	maxfreq=$(echo "scale=1; f=$maxfreq/1000000; if(f<1) print 0; f" | bc)
+
 	echo "{\"name\":\"cpu_temp_icon\",\"full_text\":\"\",\"separator\":false,\"separator_block_width\":${ICON_SPACING}${temp_color}},"
 	echo "{\"name\":\"cpu_temp_text\",\"full_text\":\"$temp\",\"min_width\":\"100 °C\",\"align\":\"right\"${temp_color}},"
+
+	echo "{\"name\":\"cpu_freq_icon\",\"full_text\":\"\",\"separator\":false,\"separator_block_width\":${ICON_SPACING}${freq_color}},"
+	echo "{\"name\":\"cpu_freq_text\",\"full_text\":\"$maxfreq GHz\",\"min_width\":\"1.0 GHz\",\"align\":\"right\"${freq_color}},"
 
 	echo "{\"name\":\"cpu_usage_text\",\"full_text\":\"$usage_text\"}"
 }
