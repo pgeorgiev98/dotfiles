@@ -1,0 +1,342 @@
+#define md_red_50 #FFEBEE
+#define md_red_100 #FFCDD2
+#define md_red_200 #EF9A9A
+#define md_red_300 #E57373
+#define md_red_400 #EF5350
+#define md_red_500 #F44336
+#define md_red_600 #E53935
+#define md_red_700 #D32F2F
+#define md_red_800 #C62828
+#define md_red_900 #B71C1C
+#define md_red_A100 #FF8A80
+#define md_red_A200 #FF5252
+#define md_red_A400 #FF1744
+#define md_red_A700 #D50000
+
+#define md_pink_50 #FCE4EC
+#define md_pink_100 #F8BBD0
+#define md_pink_200 #F48FB1
+#define md_pink_300 #F06292
+#define md_pink_400 #EC407A
+#define md_pink_500 #E91E63
+#define md_pink_600 #D81B60
+#define md_pink_700 #C2185B
+#define md_pink_800 #AD1457
+#define md_pink_900 #880E4F
+#define md_pink_A100 #FF80AB
+#define md_pink_A200 #FF4081
+#define md_pink_A400 #F50057
+#define md_pink_A700 #C51162
+
+#define md_purple_50 #F3E5F5
+#define md_purple_100 #E1BEE7
+#define md_purple_200 #CE93D8
+#define md_purple_300 #BA68C8
+#define md_purple_400 #AB47BC
+#define md_purple_500 #9C27B0
+#define md_purple_600 #8E24AA
+#define md_purple_700 #7B1FA2
+#define md_purple_800 #6A1B9A
+#define md_purple_900 #4A148C
+#define md_purple_A100 #EA80FC
+#define md_purple_A200 #E040FB
+#define md_purple_A400 #D500F9
+#define md_purple_A700 #AA00FF
+
+#define md_deep_purple_50 #EDE7F6
+#define md_deep_purple_100 #D1C4E9
+#define md_deep_purple_200 #B39DDB
+#define md_deep_purple_300 #9575CD
+#define md_deep_purple_400 #7E57C2
+#define md_deep_purple_500 #673AB7
+#define md_deep_purple_600 #5E35B1
+#define md_deep_purple_700 #512DA8
+#define md_deep_purple_800 #4527A0
+#define md_deep_purple_900 #311B92
+#define md_deep_purple_A100 #B388FF
+#define md_deep_purple_A200 #7C4DFF
+#define md_deep_purple_A400 #651FFF
+#define md_deep_purple_A700 #6200EA
+
+#define md_indigo_50 #E8EAF6
+#define md_indigo_100 #C5CAE9
+#define md_indigo_200 #9FA8DA
+#define md_indigo_300 #7986CB
+#define md_indigo_400 #5C6BC0
+#define md_indigo_500 #3F51B5
+#define md_indigo_600 #3949AB
+#define md_indigo_700 #303F9F
+#define md_indigo_800 #283593
+#define md_indigo_900 #1A237E
+#define md_indigo_A100 #8C9EFF
+#define md_indigo_A200 #536DFE
+#define md_indigo_A400 #3D5AFE
+#define md_indigo_A700 #304FFE
+
+#define md_blue_50 #E3F2FD
+#define md_blue_100 #BBDEFB
+#define md_blue_200 #90CAF9
+#define md_blue_300 #64B5F6
+#define md_blue_400 #42A5F5
+#define md_blue_500 #2196F3
+#define md_blue_600 #1E88E5
+#define md_blue_700 #1976D2
+#define md_blue_800 #1565C0
+#define md_blue_900 #0D47A1
+#define md_blue_A100 #82B1FF
+#define md_blue_A200 #448AFF
+#define md_blue_A400 #2979FF
+#define md_blue_A700 #2962FF
+
+#define md_light_blue_50 #E1F5FE
+#define md_light_blue_100 #B3E5FC
+#define md_light_blue_200 #81D4fA
+#define md_light_blue_300 #4fC3F7
+#define md_light_blue_400 #29B6FC
+#define md_light_blue_500 #03A9F4
+#define md_light_blue_600 #039BE5
+#define md_light_blue_700 #0288D1
+#define md_light_blue_800 #0277BD
+#define md_light_blue_900 #01579B
+#define md_light_blue_A100 #80D8FF
+#define md_light_blue_A200 #40C4FF
+#define md_light_blue_A400 #00B0FF
+#define md_light_blue_A700 #0091EA
+
+#define md_cyan_50 #E0F7FA
+#define md_cyan_100 #B2EBF2
+#define md_cyan_200 #80DEEA
+#define md_cyan_300 #4DD0E1
+#define md_cyan_400 #26C6DA
+#define md_cyan_500 #00BCD4
+#define md_cyan_600 #00ACC1
+#define md_cyan_700 #0097A7
+#define md_cyan_800 #00838F
+#define md_cyan_900 #006064
+#define md_cyan_A100 #84FFFF
+#define md_cyan_A200 #18FFFF
+#define md_cyan_A400 #00E5FF
+#define md_cyan_A700 #00B8D4
+
+#define md_teal_50 #E0F2F1
+#define md_teal_100 #B2DFDB
+#define md_teal_200 #80CBC4
+#define md_teal_300 #4DB6AC
+#define md_teal_400 #26A69A
+#define md_teal_500 #009688
+#define md_teal_600 #00897B
+#define md_teal_700 #00796B
+#define md_teal_800 #00695C
+#define md_teal_900 #004D40
+#define md_teal_A100 #A7FFEB
+#define md_teal_A200 #64FFDA
+#define md_teal_A400 #1DE9B6
+#define md_teal_A700 #00BFA5
+
+#define md_green_50 #E8F5E9
+#define md_green_100 #C8E6C9
+#define md_green_200 #A5D6A7
+#define md_green_300 #81C784
+#define md_green_400 #66BB6A
+#define md_green_500 #4CAF50
+#define md_green_600 #43A047
+#define md_green_700 #388E3C
+#define md_green_800 #2E7D32
+#define md_green_900 #1B5E20
+#define md_green_A100 #B9F6CA
+#define md_green_A200 #69F0AE
+#define md_green_A400 #00E676
+#define md_green_A700 #00C853
+
+#define md_light_green_50 #F1F8E9
+#define md_light_green_100 #DCEDC8
+#define md_light_green_200 #C5E1A5
+#define md_light_green_300 #AED581
+#define md_light_green_400 #9CCC65
+#define md_light_green_500 #8BC34A
+#define md_light_green_600 #7CB342
+#define md_light_green_700 #689F38
+#define md_light_green_800 #558B2F
+#define md_light_green_900 #33691E
+#define md_light_green_A100 #CCFF90
+#define md_light_green_A200 #B2FF59
+#define md_light_green_A400 #76FF03
+#define md_light_green_A700 #64DD17
+
+#define md_lime_50 #F9FBE7
+#define md_lime_100 #F0F4C3
+#define md_lime_200 #E6EE9C
+#define md_lime_300 #DCE775
+#define md_lime_400 #D4E157
+#define md_lime_500 #CDDC39
+#define md_lime_600 #C0CA33
+#define md_lime_700 #A4B42B
+#define md_lime_800 #9E9D24
+#define md_lime_900 #827717
+#define md_lime_A100 #F4FF81
+#define md_lime_A200 #EEFF41
+#define md_lime_A400 #C6FF00
+#define md_lime_A700 #AEEA00
+
+#define md_yellow_50 #FFFDE7
+#define md_yellow_100 #FFF9C4
+#define md_yellow_200 #FFF590
+#define md_yellow_300 #FFF176
+#define md_yellow_400 #FFEE58
+#define md_yellow_500 #FFEB3B
+#define md_yellow_600 #FDD835
+#define md_yellow_700 #FBC02D
+#define md_yellow_800 #F9A825
+#define md_yellow_900 #F57F17
+#define md_yellow_A100 #FFFF82
+#define md_yellow_A200 #FFFF00
+#define md_yellow_A400 #FFEA00
+#define md_yellow_A700 #FFD600
+
+#define md_amber_50 #FFF8E1
+#define md_amber_100 #FFECB3
+#define md_amber_200 #FFE082
+#define md_amber_300 #FFD54F
+#define md_amber_400 #FFCA28
+#define md_amber_500 #FFC107
+#define md_amber_600 #FFB300
+#define md_amber_700 #FFA000
+#define md_amber_800 #FF8F00
+#define md_amber_900 #FF6F00
+#define md_amber_A100 #FFE57F
+#define md_amber_A200 #FFD740
+#define md_amber_A400 #FFC400
+#define md_amber_A700 #FFAB00
+
+#define md_orange_50 #FFF3E0
+#define md_orange_100 #FFE0B2
+#define md_orange_200 #FFCC80
+#define md_orange_300 #FFB74D
+#define md_orange_400 #FFA726
+#define md_orange_500 #FF9800
+#define md_orange_600 #FB8C00
+#define md_orange_700 #F57C00
+#define md_orange_800 #EF6C00
+#define md_orange_900 #E65100
+#define md_orange_A100 #FFD180
+#define md_orange_A200 #FFAB40
+#define md_orange_A400 #FF9100
+#define md_orange_A700 #FF6D00
+
+#define md_deep_orange_50 #FBE9A7
+#define md_deep_orange_100 #FFCCBC
+#define md_deep_orange_200 #FFAB91
+#define md_deep_orange_300 #FF8A65
+#define md_deep_orange_400 #FF7043
+#define md_deep_orange_500 #FF5722
+#define md_deep_orange_600 #F4511E
+#define md_deep_orange_700 #E64A19
+#define md_deep_orange_800 #D84315
+#define md_deep_orange_900 #BF360C
+#define md_deep_orange_A100 #FF9E80
+#define md_deep_orange_A200 #FF6E40
+#define md_deep_orange_A400 #FF3D00
+#define md_deep_orange_A700 #DD2600
+
+#define md_brown_50 #EFEBE9
+#define md_brown_100 #D7CCC8
+#define md_brown_200 #BCAAA4
+#define md_brown_300 #A1887F
+#define md_brown_400 #8D6E63
+#define md_brown_500 #795548
+#define md_brown_600 #6D4C41
+#define md_brown_700 #5D4037
+#define md_brown_800 #4E342E
+#define md_brown_900 #3E2723
+
+#define md_grey_50 #FAFAFA
+#define md_grey_100 #F5F5F5
+#define md_grey_200 #EEEEEE
+#define md_grey_300 #E0E0E0
+#define md_grey_400 #BDBDBD
+#define md_grey_500 #9E9E9E
+#define md_grey_600 #757575
+#define md_grey_700 #616161
+#define md_grey_800 #424242
+#define md_grey_900 #212121
+#define md_black_1000 #000000
+#define md_white_1000 #ffffff
+
+#define md_blue_grey_50 #ECEFF1
+#define md_blue_grey_100 #CFD8DC
+#define md_blue_grey_200 #B0BBC5
+#define md_blue_grey_300 #90A4AE
+#define md_blue_grey_400 #78909C
+#define md_blue_grey_500 #607D8B
+#define md_blue_grey_600 #546E7A
+#define md_blue_grey_700 #455A64
+#define md_blue_grey_800 #37474F
+#define md_blue_grey_900 #263238
+
+
+#define bg1 md_blue_50
+#define bg2 md_blue_100
+#define fg1 md_black_1000
+#define fg2 md_grey_700
+#define ac1 md_blue_700
+#define ac2 md_blue_100
+
+accent:                 ac1
+primary:                ac2
+*background:            bg1
+*foreground:            fg1
+*cursorColor:           fg2
+
+!! black dark/light
+*color0:                md_grey_900
+*color8:                md_grey_700
+
+!! red dark/light
+*color1:                md_red_700
+*color9:                md_red_300
+
+!! green dark/light
+*color2:                md_green_700
+*color10:               md_green_300
+
+!! yellow dark/light
+*color3:                md_yellow_700
+*color11:               md_yellow_300
+
+!! blue dark/light
+*color4:                md_blue_700
+*color12:               md_blue_300
+
+!! magenta dark/light
+*color5:                md_purple_700
+*color13:               md_purple_300
+
+!! cyan dark/light
+*color6:                md_cyan_700
+*color14:               md_cyan_300
+
+!! white dark/light
+*color7:                md_grey_300
+*color15:               md_grey_100
+
+!
+! i3
+! ------------------------------------------------------
+i3.foreground:          fg1
+i3.accent:              ac1
+
+! ------------------------------------------------------
+! Polybar
+! ------------------------------------------------------
+polybar.foreground:     fg1
+
+! ------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------
+!                   BG       Border   seper
+rofi.color-window:  bg1,     fg1,     fg1
+
+!                   bg       txt       bgalt    hlbg     hltext
+rofi.color-normal:  bg1,     fg1,      bg2,     ac1,     bg1
+rofi.color-active:  bg1,     fg1,      bg2,     ac1,     bg1
+rofi.color-urgent:  bg1,     fg1,      bg2,     ac1,     bg1

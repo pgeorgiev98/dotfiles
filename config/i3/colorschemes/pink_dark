@@ -1,0 +1,84 @@
+! Material
+
+#define black_light #6d6d6d
+#define black_dark #1b1b1b
+#define red_light #ff7961
+#define red_dark #ba000d
+#define green_light #80e27e
+#define green_dark #087f23
+#define yellow_light #ffff72
+#define yellow_dark #c8b900
+#define blue_light #6ec6ff
+#define blue_dark #0069c0
+#define magenta_light #ff6090
+#define magenta_dark #b0003a
+#define cyan_light #62efff
+#define cyan_dark #008ba3
+#define white_light #f5f5f5
+#define white_dark #c2c2c2
+
+#define pink_light #ffc1e3
+#define pink_lighter #fce4ec
+#define pink_dark #78002e
+#define pink_darker #560027
+
+#define bg pink_darker
+#define fg pink_lighter
+#define pr pink_dark
+#define ac red_dark
+
+accent:                 ac
+primary:                pr
+*background:            bg
+*foreground:            fg
+*fadeColor:             white_dark
+*cursorColor:           fg
+*pointerColorBackground:bg
+*pointerColorForeground:fg
+
+!! black dark/light
+*color0:                black_dark
+*color8:                black_light
+
+!! red dark/light
+*color1:                red_dark
+*color9:                red_light
+
+!! green dark/light
+*color2:                green_dark
+*color10:               green_light
+
+!! yellow dark/light
+*color3:                yellow_dark
+*color11:               yellow_light
+
+!! blue dark/light
+*color4:                blue_dark
+*color12:               blue_light
+
+!! magenta dark/light
+*color5:                magenta_dark
+*color13:               magenta_light
+
+!! cyan dark/light
+*color6:                cyan_dark
+*color14:               cyan_light
+
+!! white dark/light
+*color7:                white_dark
+*color15:               white_light
+
+! ------------------------------------------------------
+! i3
+! ------------------------------------------------------
+i3.foreground:          fg
+
+! ------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------
+!                   BG       Border    seper
+rofi.color-window:  bg,      fg,       fg
+!                   bg       txt       pr       hlbg     hltext
+rofi.color-normal:  bg,      fg,       pr,      ac,      fg
+rofi.color-active:  bg,      fg,       pr,      ac,      fg
+rofi.color-urgent:  bg,      fg,       pr,      ac,      fg

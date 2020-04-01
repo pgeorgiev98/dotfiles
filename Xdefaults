@@ -54,4 +54,4 @@ URxvt.keysym.C-Up:    resize-font:bigger
 URxvt.internalBorder:  15
 
 ! Default to light theme
-#include ".Xdefaults.light"
+#include "/home/petko/.config/i3/colorschemes/material_blue_light"

@@ -61,15 +61,13 @@ icons_path='/usr/share/icons/HighContrast/32x32'
 brightness_icon="$icons_path/display-brightness"
 
 function brightness_up {
-	brightness=$(xbacklight -get)
-	sudo xbacklight -inc 5&
-	show_notification brightness $((brightness+5))&
+	~/.config/i3/scripts/backlight.sh -inc 5
+	show_notification brightness $(~/.config/i3/scripts/backlight.sh -get)
 }
 
 function brightness_down {
-	brightness=$(xbacklight -get)
-	sudo xbacklight -dec 5&
-	show_notification brightness $((brightness-5))&
+	~/.config/i3/scripts/backlight.sh -dec 5
+	show_notification brightness $(~/.config/i3/scripts/backlight.sh -get)
 }
 
 function volume_up {

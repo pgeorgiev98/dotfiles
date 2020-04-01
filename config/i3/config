@@ -8,7 +8,7 @@ font pango:DejaVu Sans Mono 8
 set $scripts $HOME/.config/i3/scripts
 
 # Just a white background
-exec --no-startup-id feh --bg-tile $HOME/.config/i3/light.png
+exec --no-startup-id feh --bg-tile $HOME/.config/i3/background.png
 
 # Keyboard layout
 exec --no-startup-id setxkbmap -layout us,bg -option grp:shifts_toggle
@@ -46,13 +46,13 @@ smart_gaps on
 ### Colors ###
 set_from_resource $fg i3.foreground
 set_from_resource $bg background
-set_from_resource $ac i3.accent
+set_from_resource $ac accent
 set_from_resource $red color1
 
 # class                 border  backgr. text indicator child_border
-client.focused          $fg     $fg     $bg  $bg       $fg
-client.focused_inactive $ac     $ac     $fg  $bg       $ac
-client.unfocused        $ac     $ac     $fg  $bg       $ac
+client.focused          $ac     $ac     $bg  $bg       $ac
+client.focused_inactive $fg     $bg     $fg  $bg       $bg
+client.unfocused        $fg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
@@ -84,7 +84,7 @@ bindsym XF86ScreenSaver exec --no-startup-id $scripts/lock.sh
 bindsym $mod+Escape     exec --no-startup-id $scripts/lock.sh
 
 # sleep with screen lock
-bindsym XF86Sleep exec --no-startup-id $scripts/hibernate.sh
+bindsym XF86Sleep exec --no-startup-id systemctl suspend
 
 # print screen
 bindsym --release Print exec --no-startup-id scrot /tmp/screenshot-$(date +%Y-%m-%d-%H:%M:%S).png -e 'xclip -selection c -t image/png < $f'
@@ -216,6 +216,7 @@ bar {
 		statusline $fg
 		focused_workspace $fg $fg $bg
 		inactive_workspace $bg $bg $fg
+
 		urgent_workspace $red $red $fg
 	}
 	separator_symbol " "

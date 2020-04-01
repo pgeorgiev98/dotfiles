@@ -9,8 +9,9 @@
 #define S_base2         #eee8d5
 #define S_base3         #fdf6e3
 
+accent:                 S_base02
+primary:                S_base2
 *background:            S_base3
-!! *foreground:            S_base00
 *foreground:            S_base03
 *fadeColor:             S_base3
 *cursorColor:           S_base01

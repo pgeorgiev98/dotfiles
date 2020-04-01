@@ -1,32 +1,29 @@
 #!/bin/bash
 
-BASE01='586e75'
-BASE0='839496'
+BG=`xrdb -q | grep '^\*background:' | cut -f2 -d# | tr A-Z a-z`
+FG=`xrdb -q | grep '^\*foreground:' | cut -f2 -d# | tr A-Z a-z`
+RED=`xrdb -q | grep '^\*color0:' | cut -f2 -d# | tr A-Z a-z`
+AC=`xrdb -q | grep '^accent:' | cut -f2 -d# | tr A-Z a-z`
+PR=`xrdb -q | grep '^primary:' | cut -f2 -d# | tr A-Z a-z`
 
-RED='dc322f'
-BLUE='268bd2'
-
-BACKGROUND='fdf6e3'
-FOREGROUND='002b36'
-
-INSIDEVER=$BLUE
+INSIDEVER=$AC
 INSIDEWRONG=$RED
-INSIDE=$BACKGROUND
-RINGVER=$BLUE
+INSIDE=$BG
+RINGVER=$AC
 RINGWRONG=$RED
-RING=$BASE01
-LINE=$BACKGROUND
-KEYHLCOLOR=$FOREGROUND
+RING=$PR
+LINE=$BG
+KEYHLCOLOR=$FG
 BSHL=$RED
-SEPARATOR=$BACKGROUND
-VERIF=$FOREGROUND
-WRONG=$FOREGROUND
-LAYOUT=$FOREGROUND
-TIME=$FOREGROUND
-DATE=$FOREGROUND
+SEPARATOR=$BG
+VERIF=$FG
+WRONG=$FG
+LAYOUT=$FG
+TIME=$FG
+DATE=$FG
 
 i3lock -e --clock --keylayout 0 \
-	-c $BACKGROUND \
+	-c $BG \
 	"--insidevercolor=${INSIDEVER}ff" \
 	"--insidewrongcolor=${INSIDEWRONG}ff" \
 	"--insidecolor=${INSIDE}ff" \
