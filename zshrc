@@ -129,5 +129,48 @@ function get_rprompt {
 	printf '%s' "<%B$(date +%H:%M:%S)%b>"
 }
 
+# cd back, forward and cdhist commands
+_back_index=1
+_back_arr=("$PWD")
+function back {
+	if [ $_back_index -eq 1 ]; then
+		echo "Can't go back"
+		return 1
+	fi
+	new_index=$((_back_index - 1))
+	if builtin cd "${_back_arr[new_index]}"; then
+		_back_index=$new_index
+	fi
+}
+function fwd {
+	if [ $_back_index -eq ${#_back_arr} ]; then
+		echo "Can't go forward"
+		return 1
+	fi
+	new_index=$((_back_index + 1))
+	if builtin cd "${_back_arr[new_index]}"; then
+		_back_index=$new_index
+	fi
+}
+function cd {
+	builtin cd $@
+	while [ $_back_index -lt "${#_back_arr}" ]; do
+		_back_arr[${#_back_arr}]=()
+	done
+	_back_index=$((_back_index + 1))
+	_back_arr[$_back_index]=$PWD
+}
+function cdhist {
+	i=1
+	while [ $i -le ${#_back_arr} ]; do
+		if [ $i -eq $_back_index ]; then
+			echo "${_back_arr[i]} <--"
+		else
+			echo "${_back_arr[i]}"
+		fi
+		i=$((i+1))
+	done
+}
+
 PROMPT='%(!.%B%F{red}.%B%n@)%m%f %b%1~ $(git_prompt)%_%#%f '
 RPROMPT='$(get_rprompt)'
